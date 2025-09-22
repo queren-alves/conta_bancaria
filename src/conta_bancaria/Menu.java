@@ -4,9 +4,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import conta_bancaria.model.Conta;
+
 public class Menu {
 
 	public static void main(String[] args) {
+		Conta c1 = new Conta(1, 123, 1, "Quéren Alves", 500000);
+		Conta c2 = new Conta(2, 123, 2, "Quéren Alves", 300000);
+		
+		c1.viewAcc();
+		c2.viewAcc();
+		
+		c1.withdraw(1000);
+		System.out.printf("\nSaldo: %.2f%n" , c1.getBalance());
+		c1.deposit(200);
+		System.out.printf("Saldo: %.2f%n" , c1.getBalance());
+		
 		mainMenu();
 	}
 	
@@ -66,9 +79,7 @@ public class Menu {
             }
         }
         
-        System.out.println("\t╭──────────────────────────────╮"
-        				+"\n\t│ Sistema encerrado. Até logo! │"
-        				+"\n\t╰──────────────────────────────╯");
+        System.out.println(end());
         sc.close();
 	}
 	
@@ -196,4 +207,13 @@ public class Menu {
         }
         return sc.nextInt();
     }
+	
+	public static String end() {
+		return			   "\t╭──────────────────────────────╮"
+						+"\n\t│ Sistema encerrado. Até logo! │"
+						+"\n\t│                              │"
+						+"\n\t│ Desenvolvido por Quéren Alves│"
+						+"\n\t╰──────────────────────────────╯";
+		
+	}
 }
