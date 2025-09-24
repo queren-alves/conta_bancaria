@@ -70,7 +70,7 @@ public class Conta {
 		this.balance += value;
 	}
 
-	public void viewAcc() {
+	public void view() {
 		String type = "";
 
 		switch (this.type) {
@@ -84,7 +84,7 @@ public class Conta {
 		System.out.printf("Número da agência: %d%n", this.agency);
 		System.out.printf("Tipo da conta: %s%n", type);
 		System.out.printf("Titular da conta: %s%n", this.holder);
-		System.out.printf("Saldo da conta: %.2f%n", this.balance);
+		System.out.printf("Saldo da conta: R$ %.2f%n", this.balance);
 	}
 
 }
