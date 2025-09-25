@@ -3,12 +3,17 @@ package conta_bancaria;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import conta_bancaria.controller.ContaController;
+import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
 
 public class Menu {
 
 	private static final Scanner sc = new Scanner(System.in);
+	private static final ContaController contaController = new ContaController();
 	
 	public static void main(String[] args) {
+		createAccTest();
 		mainMenu();
 	}
 	
@@ -133,7 +138,7 @@ public class Menu {
         			System.out.println("Buscar Conta.");
         			break;
         		case 2:
-        			System.out.println("Listar Contas.");
+        			contaController.viewAll();
         			break;
         		case 0:
         			start = false;
@@ -203,5 +208,15 @@ public class Menu {
 						+"\n\t│ Desenvolvido por Quéren Alves│"
 						+"\n\t╰──────────────────────────────╯";
 		
+	}
+	
+	public static void keyPress() {
+		System.out.println("\nPressione Enter para continuar..");
+		sc.nextLine();
+	}
+
+	private static void createAccTest() {
+		contaController.register(new ContaCorrente(1, 456, 1, "Thuany Silva", 10000, 100));
+		contaController.register(new ContaPoupanca(2, 457, 2, "Marcia Condarco", 10000, 10));
 	}
 }
