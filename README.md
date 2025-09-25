@@ -71,37 +71,37 @@ Abaixo, você confere o Diagrama de Classes do Projeto Conta Bancária:
 ```mermaid
 classDiagram
 class Conta {
-  - numero: int
-  - agencia: int
-  - tipo: int
-  - titular: String
-  - saldo: float
-  + get numero() int
-  + get agencia() int
-  + get tipo() int
-  + get titular() String
-  + get saldo() float
-  + set numero(numero: int) void
-  + set agencia(agencia: int) void
-  + set tipo(tipo: int) void
-  + set titular(titular: String) void
-  + set saldo(saldo: float) void
-  + sacar(valor: float) boolean
-  + depositar(valor: float) void
-  + visualizar() void
+  - number: int
+  - agency: int
+  - type: int
+  - holder: String
+  - balance: float
+  + get number() int
+  + get agency() int
+  + get type() int
+  + get holder() String
+  + get balance() float
+  + set number(number: int) void
+  + set agency(agency: int) void
+  + set type(type: int) void
+  + set holder(holder: String) void
+  + set balance(balance: float) void
+  + withdraw(value: float) boolean
+  + deposit(value: float) void
+  + view() void
 }
 class ContaCorrente {
-  - limite: float
-  + get limite() float
-  + set limite(limite: float) void
-  + sacar(valor: float) boolean
-  + visualizar() void
+  - limit: float
+  + get limit() float
+  + set limit(limit: float) void
+  + withdraw(value: float) boolean
+  + view() void
 }
 class ContaPoupanca {
-  - aniversario: int
-  + get aniversario() int
-  + set aniversario(aniversario: int) void
-  + visualizar() void
+  - anniversary: int
+  + get anniversary() int
+  + set anniversary(anniversary: int) void
+  + view() void
 }
 ContaCorrente --> Conta
 ContaPoupanca --> Conta
@@ -114,7 +114,7 @@ ContaPoupanca --> Conta
 <br />
 
 <div align="center">
-   <img src="https://i.imgur.com/MFK9yXB.png" title="source: imgur.com" width="90%"/>
+   <img src="https://i.imgur.com/qiZuwgx.png" title="source: imgur.com" width="90%"/>
 </div>
 
 <br />
@@ -169,7 +169,7 @@ Este repositório é parte de um projeto educacional, mas contribuições são s
 
 - Criar uma **issue**
 - Enviar um **pull request**
-- Compartilhar com colegas que estejam aprendendo Java!
+- Compartilhar com colegas que estejam aprendendo Java.
 
 <br />
 
@@ -178,4 +178,4 @@ Este repositório é parte de um projeto educacional, mas contribuições são s
 <br />
 
 Desenvolvido por [**Quéren**](https://github.com/queren-alves)
-Para dúvidas, sugestões ou colaborações, entre em contato via GitHub ou abra uma issue!
+Para dúvidas, sugestões ou colaborações, entre em contato via GitHub ou abra uma issue.

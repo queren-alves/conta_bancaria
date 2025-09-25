@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Menu {
 
+	private static final Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		mainMenu();
 	}
@@ -22,7 +24,6 @@ public class Menu {
 	
 	public static void mainMenu() {
 		Menu.header();
-		Scanner sc = new Scanner(System.in);
 		boolean start = true;
         while(start) {
         	
@@ -44,17 +45,17 @@ public class Menu {
 						+"\n\t╰─────────────────────────────────────────────────╯"); 
 
             System.out.print("Escolha uma opção: ");
-            int op = readOp(sc);
+            int op = readOp();
 
             switch(op) {
                 case 1:
-                    accMenu(sc);
+                    accMenu();
                     break;
                 case 2:
-                    viewMenu(sc);
+                    viewMenu();
                     break;
                 case 3:
-                    operationMenu(sc);
+                    operationMenu();
                     break;
                 case 0:
                     start = false;
@@ -70,7 +71,7 @@ public class Menu {
         sc.close();
 	}
 	
-	public static void accMenu(Scanner sc) {
+	public static void accMenu() {
 		boolean start = true;
         while(start) {
 	
@@ -86,7 +87,7 @@ public class Menu {
 						+"\n\t╰─────────────────────────────────────────────────╯"); 
 		
 			System.out.print("Escolha uma opção: ");
-			int op = readOp(sc);
+			int op = readOp();
 
 			switch(op) {
         		case 1:
@@ -109,7 +110,7 @@ public class Menu {
        }
     }
 	
-	public static void viewMenu(Scanner sc) {
+	public static void viewMenu() {
 		boolean start = true;
         while(start) {
 	
@@ -125,7 +126,7 @@ public class Menu {
 						+"\n\t╰─────────────────────────────────────────────────╯"); 
 		
 			System.out.print("Escolha uma opção: ");
-			int op = readOp(sc);
+			int op = readOp();
 
 			switch(op) {
         		case 1:
@@ -145,7 +146,7 @@ public class Menu {
        }
     }
 	
-	public static void operationMenu(Scanner sc) {
+	public static void operationMenu() {
 		boolean start = true;
         while(start) {
 	
@@ -161,7 +162,7 @@ public class Menu {
 						+"\n\t╰─────────────────────────────────────────────────╯"); 
 		
 			System.out.print("Escolha uma opção: ");
-			int op = readOp(sc);
+			int op = readOp();
 
 			switch(op) {
         		case 1:
@@ -184,7 +185,7 @@ public class Menu {
        }
     }
 
-	public static int readOp(Scanner sc) {
+	public static int readOp() {
         while (!sc.hasNextInt()) {
         	 System.out.println("\t╭──────────────────────────╮"
              				 +"\n\t│ Digite um número válido! │"

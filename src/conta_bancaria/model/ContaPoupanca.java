@@ -2,30 +2,25 @@ package conta_bancaria.model;
 
 public class ContaPoupanca extends Conta{
 	
-	private int birthday;
+	private int anniversary;
 
-	public ContaPoupanca(int number, int agency, int type, String holder, float balance, int birthday) {
+	public ContaPoupanca(int number, int agency, int type, String holder, float balance, int anniversary) {
 		super(number, agency, type, holder, balance);
-		this.birthday = birthday;
+		this.anniversary = anniversary;
 	}
 
 	public int getBirthday() {
-		return birthday;
+		return anniversary;
 	}
 
-	public void setBirthday(int birthday) {
-		this.birthday = birthday;
+	public void setBirthday(int anniversary) {
+		this.anniversary = anniversary;
 	}
 	
 	@Override
 	public void view() {
 		super.view();
-		System.out.printf("Aniversário: %d%n", this.birthday);
-		
-	}
-	
-	public boolean withdraw(float value) {
-		return super.withdraw(value);
+		System.out.printf("Aniversário da Conta: %d%n", this.anniversary);	
 	}
 
 }
