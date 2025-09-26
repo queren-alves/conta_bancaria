@@ -9,18 +9,18 @@ public class ContaPoupanca extends Conta{
 		this.anniversary = anniversary;
 	}
 
-	public int getBirthday() {
+	public int getAnniversary() {
 		return anniversary;
 	}
 
-	public void setBirthday(int anniversary) {
+	public void setAnniversary(int anniversary) {
 		this.anniversary = anniversary;
 	}
 	
 	@Override
 	public void view() {
 		super.view();
-		System.out.printf("Aniversário da Conta: %d%n", this.anniversary);	
+		System.out.printf("\tAniversário da Conta: %d%n", this.anniversary);	
 	}
 
 }

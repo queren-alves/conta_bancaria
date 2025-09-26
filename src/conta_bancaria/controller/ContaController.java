@@ -12,32 +12,64 @@ public class ContaController implements ContaRepository {
 	int number = 0;
 
 	@Override
-	public void viewAll() {
-		for (var c : accounts) {
-			c.view();
-		}
+	public void viewAll() {	
+		if (!accounts.isEmpty()) {
+			for (var c : accounts) {
+				c.view();
+			}
+		} else 
+			System.out.println("\t╭────────────────────────────╮"
+			   				+"\n\t│ Não há contas cadastradas. │"
+			   				+"\n\t╰────────────────────────────╯");
 	}
 
 	@Override
 	public void register(Conta acc) {
 		accounts.add(acc);
-		System.out.println("Conta cadastrada com sucesso.");
+		System.out.println("\t╭───────────────────────────────╮"
+				   		+"\n\t│ Conta cadastrada com sucesso. │"
+				   		+"\n\t╰───────────────────────────────╯");
 
 	}
 
 	@Override
 	public void update(Conta acc) {
-
+		var search = search(acc.getNumber());
+		
+		if (search != null) {
+			accounts.set(accounts.indexOf(search), acc);
+			System.out.println("\t╭─────────────────────────────────────╮"
+						   	+"\n\t│ A conta foi atualizada com sucesso. │"
+						   	+"\n\t╰─────────────────────────────────────╯");
+		} else
+			System.err.println("\t╭─────────────────────────────╮"
+							+"\n\t│ A conta não foi encontrada. │"
+							+"\n\t╰─────────────────────────────╯");
 	}
 
 	@Override
 	public void searchByNumber(int number) {
-
+		var c = search(number);
+		if(c != null) 
+			c.view();
+		else 
+			System.err.println("\t╭─────────────────────────────╮"
+					  		+"\n\t│ A conta não foi encontrada. │"
+					  		+"\n\t╰─────────────────────────────╯");
 	}
 
 	@Override
 	public void delete(int number) {
-
+		var c = search(number);
+		if (c != null) {
+			if (accounts.remove(c) == true) 
+				System.out.println("\t╭───────────────────────────────────╮"
+						  		+"\n\t│ A conta foi deletada com sucesso. │"
+						  		+"\n\t╰───────────────────────────────────╯");
+		} else 
+			System.err.println("\t╭─────────────────────────────╮"
+						    +"\n\t│ A conta não foi encontrada. │"
+							+"\n\t╰─────────────────────────────╯");
 	}
 
 	@Override
@@ -53,5 +85,18 @@ public class ContaController implements ContaRepository {
 	@Override
 	public void withdraw(int origin, int destination, float value) {
 
+	}
+	
+	public int generateId() {
+		return ++number;
+	}
+	
+	public Conta search(int number) {
+		for(var c : accounts) {
+			if(c.getNumber() == number) 
+				return c;
+		}
+		
+		return null;
 	}
 }

@@ -20,7 +20,7 @@ public class ContaCorrente extends Conta {
 	@Override
 	public void view() {
 		super.view();
-		System.out.printf("Limite da conta: R$ %.2f%n", this.limit);
+		System.out.printf("\tLimite da conta: R$ %.2f%n", this.limit);
 	}
 
 	@Override

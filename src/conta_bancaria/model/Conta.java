@@ -79,12 +79,14 @@ public abstract class Conta {
 			default -> type = "Desconhecido";
 		}
 
-		System.out.println("\nDados da conta:\n");
-		System.out.printf("Número da conta: %d%n", this.number);
-		System.out.printf("Número da agência: %d%n", this.agency);
-		System.out.printf("Tipo da conta: %s%n", type);
-		System.out.printf("Titular da conta: %s%n", this.holder);
-		System.out.printf("Saldo da conta: R$ %.2f%n", this.balance);
+		System.out.println("\t╭──────────────────────────╮"
+				 		+"\n\t│      Dados da Conta      │"
+				 		+"\n\t╰──────────────────────────╯");
+		System.out.printf("\tNúmero da conta: %d%n", this.number);
+		System.out.printf("\tNúmero da agência: %d%n", this.agency);
+		System.out.printf("\tTipo da conta: %s%n", type);
+		System.out.printf("\tTitular da conta: %s%n", this.holder);
+		System.out.printf("\tSaldo da conta: R$ %.2f%n", this.balance);
 	}
 
 }
