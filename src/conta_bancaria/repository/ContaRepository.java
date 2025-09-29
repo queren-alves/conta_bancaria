@@ -12,6 +12,6 @@ public interface ContaRepository {
 	
 	void withdraw(int number, float value);
 	void deposit(int number, float value);
-	void withdraw(int origin, int destination, float value);
+	void transfer(int origin, int destination, float value);
 	
 }

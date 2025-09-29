@@ -62,7 +62,7 @@ public class ContaController implements ContaRepository {
 	public void delete(int number) {
 		var c = search(number);
 		if (c != null) {
-			if (accounts.remove(c) == true) 
+			if (accounts.remove(c)) 
 				System.out.println("\t╭───────────────────────────────────╮"
 						  		+"\n\t│ A conta foi deletada com sucesso. │"
 						  		+"\n\t╰───────────────────────────────────╯");
@@ -74,17 +74,41 @@ public class ContaController implements ContaRepository {
 
 	@Override
 	public void withdraw(int number, float value) {
-
+		var c = search(number);
+		if(c != null) {
+			if(c.withdraw(value))
+				System.out.println("\nSaque efetuado com sucesso.");
+		} else 
+			System.err.println("\t╭─────────────────────────────╮"
+					  		+"\n\t│ A conta não foi encontrada. │"
+					  		+"\n\t╰─────────────────────────────╯");
 	}
 
 	@Override
 	public void deposit(int number, float value) {
-
+		var c = search(number);
+		if(c != null) {
+			c.deposit(value);
+			System.out.println("\nDepósito efetuado com sucesso.");
+		} else 
+			System.err.println("\t╭─────────────────────────────╮"
+					  		+"\n\t│ A conta não foi encontrada. │"
+					  		+"\n\t╰─────────────────────────────╯");
 	}
 
 	@Override
-	public void withdraw(int origin, int destination, float value) {
-
+	public void transfer(int origin, int destination, float value) {
+		var accOrigin = search(origin);
+		var accDest = search(destination);
+		if(accOrigin != null && accDest != null) {
+			if(accOrigin.withdraw(value)) {
+				accDest.deposit(value);
+				System.out.println("\nTransferência efetuada com sucesso.");
+			}	
+		} else 
+			System.err.println("\t╭──────────────────────────────────────────────────────────╮"
+					  		+"\n\t│ A conta de origem e/ou de destino não foram encontradas. │"
+					  		+"\n\t╰──────────────────────────────────────────────────────────╯");
 	}
 	
 	public int generateId() {
@@ -95,8 +119,7 @@ public class ContaController implements ContaRepository {
 		for(var c : accounts) {
 			if(c.getNumber() == number) 
 				return c;
-		}
-		
+		}	
 		return null;
 	}
 }

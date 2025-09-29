@@ -101,7 +101,6 @@ public class Menu {
 									+"\n\t│       Criar Conta       │"
 									+"\n\t╰─────────────────────────╯");
         			register();
-        			sc.nextLine();
         			keyPress();
         			break;
         		case 2:
@@ -160,7 +159,6 @@ public class Menu {
 									+"\n\t│ Lista de todas as contas │"
 									+"\n\t╰──────────────────────────╯");
         			viewAll();
-        			sc.nextLine();
         			keyPress();
         			break;
         		case 0:
@@ -194,13 +192,25 @@ public class Menu {
 
 			switch(op) {
         		case 1:
-        			System.out.println("Sacar.");
+        			System.out.println("\t╭─────────────────────╮"
+									+"\n\t│        Saque        │"
+									+"\n\t╰─────────────────────╯");
+        			withdraw();
+        			keyPress();
         			break;
         		case 2:
-        			System.out.println("Depositar.");
+        			System.out.println("\t╭──────────────────────╮"
+									+"\n\t│       Depósito       │"
+									+"\n\t╰──────────────────────╯");
+        			deposit();
+        			keyPress();
         			break;
         		case 3:
-        			System.out.println("Transferir.");
+        			System.out.println("\t╭───────────────────────╮"
+									+"\n\t│     Transferência     │"
+									+"\n\t╰───────────────────────╯");
+        			transfer();
+        			keyPress();
         			break;
         		case 0:
         			start = false;
@@ -242,6 +252,7 @@ public class Menu {
 	
 	private static void viewAll() {
 		contaController.viewAll();
+		sc.nextLine();
 	}
 	
 	private static void register() {
@@ -270,23 +281,24 @@ public class Menu {
 		 						   +"\n\t│ Tipo de conta inválido. │"
 		 						   +"\n\t╰─────────────────────────╯");
 		}
+		sc.nextLine();
 	}
 	
 	private static void searchByNumber() {
 		System.out.print("\nDigite o número da conta: ");
 		int number = sc.nextInt();
-		sc.nextLine();
 		contaController.searchByNumber(number);
+		sc.nextLine();
 	}
 	
 	private static void delete() {
-		System.out.print("\nDigite o número da conta: ");
+		System.out.print("\n\tDigite o número da conta: ");
 		int number = sc.nextInt();
 		sc.nextLine();
 		
 		Conta c = contaController.search(number);
 		if (c != null) {
-			System.out.print("\nTem certeza que deseja excluir está conta? (S/N): ");
+			System.out.print("\n\tTem certeza que deseja excluir está conta? (S/N): ");
 			String confirm = sc.nextLine();
 			
 			if (confirm.equalsIgnoreCase("s")) 
@@ -343,6 +355,46 @@ public class Menu {
 			 	System.err.println("\t╭─────────────────────────────╮"
 			 				    +"\n\t│ A conta não foi encontrada. │"
 			 					+"\n\t╰─────────────────────────────╯");
+	}
+	
+	private static void withdraw() {
+		System.out.print("\n\tDigite o número da conta: ");
+		int number = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("\n\tDigite o valor do saque: ");
+		float value = sc.nextInt();
+		sc.nextLine();
+		
+		contaController.withdraw(number, value);
+	}
+	
+	private static void deposit() {
+		System.out.print("\n\tDigite o número da conta: ");
+		int number = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("\n\tDigite o valor do depósito: ");
+		float value = sc.nextInt();
+		sc.nextLine();
+		
+		contaController.deposit(number, value);
+	}
+	
+	private static void transfer() {
+		System.out.print("\n\tDigite o número da conta de origem: ");
+		int origin = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("\n\tDigite o número da conta de destino: ");
+		int destination = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("\n\tDigite o valor da transferência: ");
+		float value = sc.nextInt();
+		sc.nextLine();
+		
+		contaController.transfer(origin, destination, value);
 	}
 	
 }
